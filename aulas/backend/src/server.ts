@@ -1,6 +1,8 @@
 import express from 'express';
-import './database/connection';
+import { getRepository } from 'typeorm';
 
+import './database/connection';
+ 
 
 const app = express();
 
@@ -22,8 +24,16 @@ app.use(express.json());
 // Body: http://localhost:3333/users/1 (Identificar um recurso)
 
 
-app.get('/users', (request, response) => {
-    return response.json({ message: "Hello World" });
+app.post('/orphanages', (request, response) => {
+    const {
+        name,
+        latitude,
+        longitude,
+        about,
+        instructions,
+        opnening_hours,
+        open_on_weekends
+    } = request.body;
 });
 
 app.listen(3333);
